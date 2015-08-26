@@ -1,3 +1,4 @@
+#４回
 require 'sinatra'
 require 'sinatra/reloader'
 
@@ -10,7 +11,9 @@ end
 
 =end
 
-get '/hello/:name?/:tosi?' do |n,l|#先にここで指定したら使うときに楽になる(複数も可能)
+get '/hello/:name/?:tosi?' do |n,l|#先にここで指定したら使うときに楽になる(複数も可能)
     "hello #{n} #{l}"
     #nのみで表示できる
 end
+#「?」の追加で便利になるが,「/」は必須?
+#動画ではできていたので何かが間違っているとは思いますがよくわかりませんでした

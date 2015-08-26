@@ -1,3 +1,4 @@
+#3回
 require 'sinatra'
 require 'sinatra/reloader'
 #上の文章を追加したらコンパイルを再度しなくてもちゃんと追加部分が反映された
