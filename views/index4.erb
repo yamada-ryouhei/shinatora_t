@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html larg="ja">
+    <meta charset="utf-8">
+    <title>BBS</title>
+</hello>
+<body>
+    <h1>BBS</h1>
+    <ul>
+        <% @comments.each do |coment| %><!--基本的にはRubyと同じ文法-->
+        <li data-id="<%= @coment.id %>"><!--idとコメントの属性をつける-->
+        <% comment.body %><!--この部分を表示-->
+        </li>
+        <% end %>
+    </ul>
+</body>
+</html>
+    
