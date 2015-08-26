@@ -9,7 +9,7 @@
         <% @comments.each do |comment| %><!--基本的にはRubyと同じ文法-->
         <li data-id="<%=comment.id %>"><!--idとコメントの属性をつける-->
         <%= comment.body %><!--この部分を表示-->
-        <span class="deleteCmd" style="cursor:pointer;color:blue">[x]</span><!--今回の追加部分-->
+        <span class="deleteCmd" style="cursor:pointer;color:blue">[削除]</span><!--今回の追加部分-->
         </li>
         <% end %>
     </ul>
