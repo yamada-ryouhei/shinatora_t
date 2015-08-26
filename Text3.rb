@@ -1,16 +1,16 @@
 require 'sinatra'
 require 'sinatra/reloader'
-#上の文章を追加したらコンパイルを再度しなくてもちゃんと追加部分が反映された
 
 
-get '/' do
-    "hello world"
+=begin
+get '/hello/:name' do #要求の後に「:」で区切って変数指定
+    "hello #{params[:name]}"
+    #文字列の中で扱うときは#{params[:変数名]}で表示
 end
-#実行済み
 
+=end
 
-#前回の追加部分　始まり
-get '/about' do
-    "about this site page"
+get '/hello/:name?/:tosi?' do |n,l|#先にここで指定したら使うときに楽になる(複数も可能)
+    "hello #{n} #{l}"
+    #nのみで表示できる
 end
-#前回の追加部分　終わり
