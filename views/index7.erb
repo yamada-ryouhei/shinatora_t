@@ -9,6 +9,7 @@
         <% @comments.each do |comment| %><!--基本的にはRubyと同じ文法-->
         <li data-id="<%=comment.id %>"><!--idとコメントの属性をつける-->
         <%= comment.body %><!--この部分を表示-->
+        <span class="deleteCmd" style="cursor:pointer;color:blue">[x]</span><!--今回の追加部分-->
         </li>
         <% end %>
     </ul>
@@ -16,6 +17,18 @@
     <form method="post" action="/new"><!--postの部分で"/new"と送られたとき-->
         <input type="text" name="body"><input type="submit" value="post!">
     </form>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    
+    <script>$('.deleteCmd').click(function(){
+        var el = $(this).parent();
+        if (confirm('are you sure to delete?')){
+            $.post('/delete',{ id: el.data('id')//Text12のほうに消すidを送ってやる
+        },function(){
+            el.fadeOut(800);//0.8秒後に消える
+            });
+        }
+    })
+    </script>
 </body>
 </html>
     
