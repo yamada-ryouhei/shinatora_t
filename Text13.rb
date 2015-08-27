@@ -8,7 +8,7 @@ ActiveRecord::Base.establish_connection(
   "database"=> "./bbs.db"
 )
 
-helpers do
+helpers do#例外処理について（決まり文句である）
     include Rack::Utils
     alias_method :h, :escape_html
 end
@@ -24,10 +24,10 @@ get '/' do
 end
 
 post '/new' do 
-    Comment.create({:body => params[:body]})
-    redirect '/'
+    Comment.create({:body => params[:body]})#新しくcommentのテーブル内のbodyに文章を追加
+    redirect '/'#「/」を返すことで表示をさせる要求に飛ばす
 end
 
 post '/delete' do 
-    Comment.find(params[:id]).destroy#deleteの処理をする
+    Comment.find(params[:id]).destroy#送られたidのものを削除
 end

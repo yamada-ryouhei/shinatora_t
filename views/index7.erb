@@ -4,26 +4,29 @@
     <title>BBS</title>
 </hello>
 <body>
-    <h1>BBS</h1>
+    <h1>BBS</h1><!--見出し１-->
     <ul>
         <% @comments.each do |comment| %><!--基本的にはRubyと同じ文法-->
         <li data-id="<%=comment.id %>"><!--idとコメントの属性をつける-->
-        <%= h comment.body %><!--この部分を表示-->
-        <span class="deleteCmd" style="cursor:pointer;color:blue">[削除]</span><!--今回の追加部分-->
+        <%= h comment.body %><!--この部分と下の削除ボタンを画面に表示させる-->
+        <span class="deleteCmd" style="cursor:pointer;color:blue">[削除]</span>
         </li>
         <% end %>
     </ul>
-    <h2>Add New</h2>
-    <form method="post" action="/new"><!--postの部分で"/new"と送られたとき-->
+    <h2>Add New</h2><!--見出し２-->
+    <form method="post" action="/new"><!--/new(つまりは文章追加されたページ)にいどうさせて
+    以下の文章をデータとして送信する-->
         <input type="text" name="body"><input type="submit" value="post!">
     </form>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    
-    <script>$('.deleteCmd').click(function(){
-        var el = $(this).parent();
-        if (confirm('are you sure to delete?')){
-            $.post('/delete',{ id: el.data('id')//Text12のほうに消すidを送ってやる
-        },function(){
+    <!--上部分は削除の要求ボタンが押されたときにそれをしてもよいかを確認するもの-->
+    <script>$('.deleteCmd').click(function(){//以下はjavascriptの文章で処理をする
+        var el = $(this).parent();//parentは自分から見た時の親のディレクトリ(sinatra)
+        //↑varは変数の宣言のためのもの
+        if (confirm('are you sure to delete?')){//警告文と削除に同意された時の処理
+                //googleから持ってきた削除の警告に文章を追加して表示する
+            $.post('/delete',{ id: el.data('id')//Text13のほうに消すidを送ってやる
+        },function(){//function関数の内容 複数使用が予想される処理を記述
             el.fadeOut(800);//0.8秒後に消える
             });
         }
@@ -31,4 +34,8 @@
     </script>
 </body>
 </html>
+    <!--中にある< % ～ % >の部分はruby文法での記述ができる-->
+     <!--中にある< %= ～ % >の部分はruby文法だがこちらは表示-->
+    
+    
     
